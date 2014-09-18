@@ -95,50 +95,107 @@
     </p>
     
     <!--Wordflow diagram-->
-    <div id="diagram">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <div id="mroot" class="diagram-block">ROOT</div>
-            </div>
+    <div id="diagram" class="flowchart">
+
+        <div id="mroot" class="diagram-block">ROOT</div>
+
+        <div id="output1" class="diagram-block">Output</div>
+
+        <div id="python" class="diagram-block">Python</div>
+
+            <div id="gnuplot" class="diagram-block-inline">gnuplot</div>
+
+            <div id="textables" class="diagram-block-inline">Tex tables</div>
+        
+        <div></div>
+        
+            <div id="output2" class="diagram-block-inline">Output</div>
+        
+            <!--Spacer-->
+            <div class="diagram-block-inline-spacer"></div>
             
-            
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <div id="output1" class="diagram-block">Output</div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <div id="python" class="diagram-block">Python</div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2 col-md-offset-4">
-                <div id="gnuplot" class="diagram-block">gnuplot</div>
-            </div>
-            <div class="col-md-2">
-                <div id="textables" class="diagram-block">Tex tables</div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2 col-md-offset-4">
-                <div id="output2" class="diagram-block">Output</div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5">
-                <div id="latex" class="diagram-block">LaTeX</div>
-            </div>
-        </div>
+        <div id="latex" class="diagram-block">LaTeX</div>
+
     </div>
     
- 
+    <!--jsPlumb script to draw connections-->
+    <script>
+        jsPlumb.ready(function() {
+            jsPlumb.setContainer($("diagram"));
+            
+            jsPlumb.importDefaults({
+                PaintStyle:{ strokeStyle:"black", lineWidth:2},
+                Overlays: [
+                    ["Arrow", {
+                        width: 10,
+                        length: 5,
+                        foldback: 0.5,
+                        location: 1,
+                    }]
+                ]
+            });
+            
+            jsPlumb.connect({
+                source: "mroot",
+                target: "output1",
+                endpoint:"Blank",
+                connector: "Straight",
+                anchors: ["Bottom", "Top"]
+            });
+            
+            jsPlumb.connect({
+                source: "output1",
+                target: "python",
+                endpoint:"Blank",
+                connector: "Straight",
+                anchors: ["Bottom", "Top"]
+            });
+            
+            // connect python to gnuplot and textables
+            jsPlumb.connect({
+                source: "python",
+                target: "gnuplot",
+                endpoint:"Blank",
+                connector: "Straight",
+                anchors: ["Bottom", "Top"]
+            });
+            
+            jsPlumb.connect({
+                source: "python",
+                target: "textables",
+                endpoint:"Blank",
+                connector: "Straight",
+                anchors: ["Bottom", "Top"]
+            });
+            
+            // connect gnuplot to output2
+            jsPlumb.connect({
+                source: "gnuplot",
+                target: "output2",
+                endpoint:"Blank",
+                connector: "Straight",
+                anchors: ["Bottom", "Top"]
+            });
+            
+            // connect output2 to latex
+            jsPlumb.connect({
+                source: "output2",
+                target: "latex",
+                endpoint:"Blank",
+                connector: ["Bezier", { curviness: 10 }],
+                anchors: ["Bottom", [0.3,0,0,-1]]
+            });
+            
+            jsPlumb.connect({
+                source: "textables",
+                target: "latex",
+                endpoint:"Blank",
+                connector: ["Bezier", { curviness: 10 }],
+                anchors: ["Bottom", [0.7,0,0,-1]]
+            });
+            
+        });
+    </script> 
     
     <p>
         The end result was a working directory that contained dozens of data files with incoherent names, scripts with terrible variable names, and LaTeX labels with vague names. This resulted in the LaTeX file itself being a difficult to edit beast. Because of all these problems, the experience creating my dissertation was hampered by all of these walls I had put up myself. 
@@ -268,19 +325,6 @@
     </div>
 
     </div>
-    <!--jsPlumb script to draw connections-->
-    <script>
-        jsPlumb.ready(function() {
-            jsPlumb.setContainer($("diagram"));
-            
-            jsPlumb.connect({
-                source: "mroot",
-                target: "latex",
-                endpoint:"Blank",
-                anchor: "Top"
-                //connector: "Straight"
-            });
-        });
-    </script>  
+     
   </body>
 </html>
