@@ -1,0 +1,112 @@
+---
+layout: post
+title: Writing my Dissertation
+subtitle: Things I leant along the way
+---
+
+<h1>Introduction</h1>
+
+<p>
+    In the last year I wrote my dissertation about angular the distributions of J/Psi mesons produced at the CMS. This post is not so much about the end results, but how I went about organising and writing my dissertation, and things I would have done differently. I hope this will be of use for those writing their first large reports dealing with lots of data and writing. I'm not an expert on typography and graphic design, so do not take my word as gospel. 
+</p>
+
+<h1>The Tools</h1>
+
+    <div>
+        <ul>
+            <li>LaTeX (using textmaker)</li>
+            <ul>
+                <li>pgftikz</li>
+                <li>listings</li>
+            </ul>
+            <li>ROOT</li>
+            <li>Python</li>
+            <li>gnuplot</li>
+        </ul>
+
+        <p>
+            LaTeX was my text formatter of choice, which is the natural choice in the field of physics; the pgftikz package was used for images and some plots that weren't done in gnuplot; listings for adding colour to any code; ROOT is the analysis tool used at CERN; and Python was used to further format results produced from ROOT.
+        </p>
+        
+        <p>
+            None of these programs are particularly unique in their function or form, such as using word over LaTeX or MATLAB over Python/gnuplot. The only constraint in my choices was that I had to use use ROOT. Choosing LaTeX add another constraint, LaTeX makes documents too pretty to pass up the option.
+        </p>
+    </div>
+    
+    
+
+<h1>Workflow</h1>
+
+    </p>
+        All of my data came from ROOT, with various analysis results being saved to file. Once all these output files were made, I wrote a Python script that manipulated this data (as opposed to doing it in ROOT since it is much easier) providing either output a LaTeX ready table or for some cases prepared a white space separated file to put into gnuplot. gnuplot was used to provide $\chi^2$ fits and plots for some of graphs, and pgfplots tikz  was used to plot data that didn't need fitting due to its slightly easier syntax. It is possible to do all of these things in ROOT, but it's much easier to use these programs plus they are latex friendly.
+    </p>
+
+    <p> 
+        For the dissertation itself, almost everything I wrote (including layout changes) was written into the single main .tex file. The only bits that weren't into that main file was my code and tables processed by my Python script. In a diagram, it worked like this:
+    </p>
+    
+    <!--Wordflow diagram-->
+    <div id="diagram">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div id="mroot" class="diagram-block">ROOT</div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div id="output1" class="diagram-block">Output</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div id="python" class="diagram-block">Python</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4">
+                <div id="gnuplot" class="diagram-block">gnuplot</div>
+            </div>
+            <div class="col-md-2">
+                <div id="textables" class="diagram-block">Tex tables</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4">
+                <div id="output2" class="diagram-block">Output</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div id="latex" class="diagram-block">LaTeX</div>
+            </div>
+        </div>
+    </div>
+    
+ 
+    
+    <p>
+        The end result was a working directory that contained dozens of data files with incoherent names, scripts with terrible variable names, and LaTeX labels with vague names. This resulted in the LaTeX file itself being a difficult to edit beast. Because of all these problems, the experience creating my dissertation was hampered by all of these walls I had put up myself. 
+    </p>
+
+<h1>What I would fix (and what you should do)</h1>
+
+    <p>
+        The biggest issue on the whole was not compartmentalising everything like I should have. This includes separating the main .tex files into separate smaller files that makes things easier to maintain and edit; separating data files into families either by creating a new folder to put the files in, or creating some kind of sane naming convention, or even using ROOTs internal structures; splitting up the code I used for ROOT (1000+ lines with a lot of histograms, repeated code, minimal comments) into more manageable bites.
+    </p>
+
+    <p>
+        Compartmentalising makes working easier in many ways, such as being able to troubleshoot code since it will be contained into smaller bits, including/remove parts you don't need, and reusing bits you have used before. 
+    </p>
+
+    <p>
+        In all code I wrote (including LaTeX), I wish I wrote more comments. This is not unique to just research, but *any* programming you do. Even if you're the only person who will read it, there will come a point where you put aside some bit code for an extended period of time, after which you'll come back to it and find you have no idea what you wrote. You may have some vague recollections, but you'll waste time relearning this piece of code because of the lack of documentation, incoherent variable names, and sometimes just weird bits that look right. Comment, comment, comment. This cannot be emphasised enough.
+    </p>
+
+    
