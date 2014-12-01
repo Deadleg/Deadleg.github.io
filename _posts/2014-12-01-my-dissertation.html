@@ -7,7 +7,7 @@ subtitle: What I learned along the way
 <h2>Introduction</h2>
 
 <p>
-    For my physics honours dissertation I wrote about angular the distributions of J/Psi mesons produced at the CMS. The following is a reflection on the process I used in writing my dissertation, with some notes on what I did wrong and how I would do it differently.
+    My BSc (honours) dissertation in physics was about angular distributions of J/Psi mesons produced at the CMS. The following is a reflection on the process I used in writing my dissertation, with some notes on what I did wrong and how I would do it differently.
 </p>
 <!--end excerpt-->
 <h2>Tools</h2>
@@ -32,11 +32,11 @@ subtitle: What I learned along the way
 <h2>Workflow</h2>
 
     </p>
-        All of the code for ROOT was written in one file (mistake number one). Each result set was then written to a file, leading to around 50 files to process. Python was then used to process these files, which produced either a LaTeX table or a data file to be turned into figures using gnuplot/pgfplots. 
+        All of the code for ROOT was written in one file. Each result set was then written to a file, leading to around 50 files to process. Python was then used to go through these to produce either a LaTeX table, or a data file to be turned into figures using gnuplot/pgfplots. 
     </p>
 
     <p> 
-        For the dissertation itself, almost everything I wrote (including layout changes) was written into the single main .tex file (mistake number two). The only bits that weren't put into the main file was my code and tables processed by the Python script. 
+        For the dissertation itself, almost everything I wrote (including layout changes) was written into the single main .tex file. The only bits that weren't put into the main file was my code, images, and tables processed by the Python script. 
     </p>
     
     <p>
@@ -147,11 +147,11 @@ subtitle: What I learned along the way
     </script> 
     
     <p>
-    Whilst the workflow is fairly straight forward, a few of my working decisions hampered the ability to <emph>flow</emph> from one section to the next. One such problem was my ROOT code was 1000 lines long, and contained many variables with terrible, hard to debug names. In addition, if I wanted one particular result (such as a graph) I would have to comment out at least half of the code just to get it to compile. The outputted files also had terrible names, which led to my Python script being close to unreadable.
+        Whilst the workflow is fairly straight forward, a few of my working decisions hampered the ability to <emph>flow</emph> from one section to the next. One such problem was my ROOT code was 1000 lines long, and contained many variables with terrible, hard to debug names. In addition, if I wanted one particular result (such as a graph) I would have to comment out at least half of the code just to get it to compile. The outputted files also had terrible names, which led to my Python script being close to unreadable.
     </p>
     
     <p>
-        The LaTeX document also had problems due to its length, and made compiling a pain if there were any errors. The enjoyment in working with my project was greatly over shadowed by these organisational problems, and led to hours being wasted fixing problems or deciphering what I had done.
+        The LaTeX document also had problems due to its length, and made compiling a pain if there were any errors. The enjoyment in working with my project was greatly over shadowed by these organisational problems, and led to hours being wasted trying to fix problems or deciphering what I had done.
     </p>
 
 <h2>Lessons learnt</h2>
@@ -163,7 +163,7 @@ subtitle: What I learned along the way
     </p>
 
     <p>
-        Why didn't I split everything up? Strangely enough, I had read a few guides on writing a thesis in LaTeX. One of the first things they would note is to <i>split your .tex files in to chapters or sections</i>. Knowing this, I decided it was too much effort and put it all into one file. Needless to say, I regret my decision. It wasn't a great choice, but I wasn't huddled up in the corner of the room over it either. 
+        Why didn't I split everything up? Before I started writing my results, I had already read a few guides on writing a thesis in LaTeX. One of the first things that would be noted is to split your .tex files in to chapters or sections. Knowing this, I decided it was too much effort and put it all into one file. Needless to say, I regretted that decision when the .tex files became a bit large. 
     </p>
     
     <p>
@@ -185,6 +185,7 @@ subtitle: What I learned along the way
     </p>
 
 <h2>Conclusion</h2>
+
     <p>
-        Whilst I may sound a bit angsty about my work, disregarding the content I am fairly happy with the final result. There are other things I could have done to improve my dissertation, including asking for more help, not leaving work to the last minute, and not losing over my cool because the plots produced from ROOT look different from those produced in gnuplot or pgflot. But the thing would have helped the most would have been to actually care for my topic, or even physics itself. Since finishing my degree, I am glad I stopped because I stopped caring for physics in my first year of university. I just didn't realise until my final year.
+        Whilst I may sound a bit angsty about my work, disregarding the content I am fairly happy with the final result. There were other things I could have done to improve my dissertation, including asking for more help, not leaving work to the last minute, and not losing over my cool because the plots produced from ROOT look different from those produced in gnuplot or pgflot. But the thing would have helped the most would have been to actually be enthusiastic for my topic, or even physics itself. In my final year of university, I realised stopped caring for physics in my second year of university. I am now quite happy that I have done so, as I've enjoyed myself far more doing programming and computery things than I did solving meaningless problems that thousands before had done.
     </p>
