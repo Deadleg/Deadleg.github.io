@@ -9,7 +9,7 @@ subtitle: What I learned along the way
 <p>
     For my physics honours dissertation I wrote about angular the distributions of J/Psi mesons produced at the CMS. The following is a reflection on the process I used in writing my dissertation, with some notes on what I did wrong and how I would do it differently.
 </p>
-<!--end excerpt-->
+
 <h2>Tools</h2>
 
     <div>
@@ -170,7 +170,7 @@ subtitle: What I learned along the way
         I have since learned from my experience, and from the perspective of a reformed ex-non-compartmentaliser, the grass is much, much greener on this side. The advantages of doing it would have solved most of my problems. The ability to view the structure of the code and to run what is necessary with minimal effort, the ability to isolate problems and solve them later, the ability to simply function without fighting against the code.
     </p>
 
-<h3>Documentation</h3>
+<h2>Documentation</h2>
     
     <p>
         I wish I wrote more comments. Not just in my programming code but my LaTeX stuff as well. In first year compsci there is a heavy emphasis on writing comments, even for the relatively simple tasks we were given. Clearly, that first year was a waste for me, since I wrote minimal amounts of documentation throughout the entire project. This made going through my code slow, especially if I hadn't look at that particular section for a few days.
@@ -184,7 +184,4 @@ subtitle: What I learned along the way
         Of course not everything can be documented, nor should it be. Names should be relatively self documenting. Names such as "bin1.dat", "v2pt6.dat", or "4bins.plt" are not self documenting. My data files are full of names like this, and it was not an experience I would like to repeat.
     </p>
 
-<h2>Conclusion</h2>
-    <p>
-        Whilst I may sound a bit angsty about my work, disregarding the content I am fairly happy with the final result. There are other things I could have done to improve my dissertation, including asking for more help, not leaving work to the last minute, and not losing over my cool because the plots produced from ROOT look different from those produced in gnuplot or pgflot. But the thing would have helped the most would have been to actually care for my topic, or even physics itself. Since finishing my degree, I am glad I stopped because I stopped caring for physics in my first year of university. I just didn't realise until my final year.
-    </p>
+

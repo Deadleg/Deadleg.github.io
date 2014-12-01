@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>webtex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <script src="/js/dom.jsPlumb-1.6.4-min.js "></script>
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <Script src="/js/wkerrigan.js"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <!--Title-->
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="#">webtex</a>
+        </div>
+        <!--Header buttons-->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" id="navbar-buttons">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects/">Projects</a></li>
+                <li><a href="https://github.com/Deadleg">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="row-fluid">
+            <div class="col-md-8">
+                <div class="post-header">
+                    <h1>Yet another introduction to LaTeX <small></small><h1>
+                </div>
+                <p class="muted">01 December 2014</p>
+
+                <h2 id="introduction">Introduction</h2>
+
+<p>If you’re reading this, you probably know what LaTeX is roughly. LaTeX works by first seperating the content and layout of the document. The user can then specify the layout parameters and any design they choose. LaTeX is then used to create the final document, constraining the content to the design parameters.</p>
+
+<p>Since the document is produced <emph>after</emph> defining the content and design, the TeX engine has all of the information it needs to create an optimally designed document.</p>
+
+<p>This introduction is not so much about creating LaTeX documents, but to show how the structure of a LaTeX file relates to the document it produces
+<!--end excerpt--></p>
+
+<h2 id="the-structure-of-a-document">The structure of a document</h2>
+
+<h3 id="dimensions">Dimensions</h3>
+
+<p>Lets start off with a page from a book. When you first look at piece of page, the first shape you see is a rectangle formed by the edges of the paper. The next largest shape is the rectangle that the body text is constrained to. If there is margin text, that too is constrained to a rectangle that doesn’t overlap with the body text. Perhaps there could be more rectangles defining tables, images, quotes, and so on.</p>
+
+<p>Typically, these rectangles will lie wholly inside another, and do not partially overlap with another rectangle. There are various quantities that define the distance between one rectangle from another. Most notably, the margins define the closest the content can be to the edge of the paper. Similarly, there will be a distance seperating margin notes from the body text, images from the body text, the distance between chapter headings and the text… there are a lot of distances. Infact, the rectangle you need is the paper size, the rest of the structure and be define by these distances.</p>
+
+<h3 id="text-structure">Text Structure</h3>
+
+<p>Of course, books aren’t the only kind of document in existence. Reports are not necessarily double sided, nor are they always bound like a book. They also are shorter than books, and thus don’t need headings larger than a chapter. On the other end of the spectrum, a letter can be as small as one page, and generally consists of three items: the senders address, the recipients address, and the message. The text formatting also differs, with books most likely using single spacing, while letters and reports can be found using larger spacing between lines.</p>
+
+<p>The result is that each type document type has a different set of rules on how to display text. The rules should applied uniformly for every part/chapter/section/caption. They contain information such as font size, alignment, numbering, padding from surrounding text, and so on. Some rules will be enforced rigorously, like font colour, and others not so rigorously, such as the spacing between words.</p>
+
+<p>If you are familiar with CSS, the styles you define are essentially the same as these rules, except the page boundaries are far more varied in ratios and scale.</p>
+
+<h3 id="put-together">Put together</h3>
+
+<p>Creating a document is then done associating each bit of content with some rule, along with some piecing together.</p>
+
+<h2 id="the-document-as-a-latex-file">The document as a LaTeX file</h2>
+
+<p>Here, we will go through the process of making a simple article, with some customisation to illustrate how change rules. This is page we will make:</p>
+
+<p><img src="/assets/images/LaTeXExample.jpg" class="img-responsive" /></p>
+
+<h3 id="globally-defined-rules">Globally defined rules</h3>
+
+<p>There are some rules you can safely design for an entire document. Examples include the typeface you want for the body text, or the paper size. Essentially, these are <em>default</em> rules, since they can be changed mid-document. In a LaTeX file, these are given in what is called the <em>preamble</em>. The preamble is special place where you can define the default rules for the entire document.</p>
+
+<p>Lets start off declaring that this document is to be an of an article type. Firstly, we need the type of document we are making. This can be done with the code:</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span></code></pre></div>
+
+<p><code>article</code> is a name for a particle style of article, but it is not the only type. KOMA-script has its own analogues for book/article etc such as <code>scrbook</code>.</p>
+
+<p>Next, we need to make the article in landscape, with two columns. It is possible to use pure LaTeX, or TeX, to add these rules, however other useful people have done the coding already. The useful bits of code can be included by introducing <em>packages</em>. The first such package is the <code>geometry</code> package, which gives lot of useful tools for changing page dimensions. Lets include it:</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\usepackage</span><span class="na">[landscape]</span><span class="nb">{</span>geometry<span class="nb">}</span></code></pre></div>
+
+<p>The <code>\usepackage</code> command tells latex use the package in the braces (<code>geometry</code>), while in the square brackets you can specify some options that will set some rules, which in this case is set the page to landscape. Package are included in the distributions you download, so it should work without any fiddling.</p>
+
+<p>To force it landscape, we add an argument to <code>\documentclass</code>. While we’re adding arguments, the font size can also be specified here (perhaps confusingly):</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\documentclass</span><span class="na">[12pt, twocolumn]</span><span class="nb">{</span>article<span class="nb">}</span></code></pre></div>
+
+<p>Lastly, we get some dummy text we can use the <code>lipsum</code> package. All it does is that it gives a command to generate dummy text in latin.</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\usepackage</span><span class="nb">{</span>lipsum<span class="nb">}</span></code></pre></div>
+
+<p>The end result for the preamble is:</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\documentclass</span><span class="na">[12pt, twocolumn]</span><span class="nb">{</span>article<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[landscape, margin=2cm]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>lipsum<span class="nb">}</span></code></pre></div>
+
+<p>Remember these define rules for the content, and provide some utility in the form of extra text. They do not constitute the content by itself. The next we need to do is add some content.</p>
+
+<h4 id="environments">Environments</h4>
+
+<p>Say you have a quote, and you want to have it styled using a different set of rules. Generally to this, you need to provide two things: the name for the rules to use, and where to place these rules. In LaTeX, when you provide both of these you are using an <em>environment</em>, and it has the form:</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\begin</span><span class="nb">{</span>environment<span class="nb">_</span>name<span class="nb">}</span>
+        <span class="c">%put stuff here</span>
+    <span class="k">\end</span><span class="nb">{</span>rulename<span class="nb">}</span></code></pre></div>
+
+<p>Any content between these statements will have the rules define by rulename. This comes up everywhere in LaTeX, so you will quickly become acquainted with it.</p>
+
+<h3 id="content">Content</h3>
+
+<p>So now we’re at a point where to want to specify the content. This is easy, all was need is the <code>document</code> environment, which contains all of the rules in the preamble.</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\documentclass</span><span class="na">[12pt, twocolumn]</span><span class="nb">{</span>article<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[landscape, margin=2cm]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>lipsum<span class="nb">}</span>
+    
+    <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+        <span class="k">\lipsum</span>
+    <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></code></pre></div>
+
+<p>Here, the <code>\lipsum</code> is from the <code>lipsum</code> package, and all it does it create some dummy text. You should be able to compile this, and find the pdf is missing two things: the title, and the section heading “my article”.</p>
+
+<p>All content lives inside the <code>document</code> environment, including the title information. LaTeX provides some easy commands to do this:</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\title</span><span class="nb">{</span>Example<span class="nb">}</span>
+    <span class="k">\author</span><span class="nb">{</span>john doe<span class="nb">}</span>
+    <span class="k">\date</span><span class="nb">{}</span>
+    <span class="k">\maketitle</span></code></pre></div>
+
+<p>The commands are self explanatory, except the <code>\date{}</code> line which has no content. This simply removes the date from the title. <code>\maketitle</code> tells LaTeX exactly that, make the title! If you don’t include it, the title won’t work.</p>
+
+<p>Lastly, we add a section header. LaTeX provides a set of headers, which you can find easily <a href="http://en.wikibooks.org/wiki/LaTeX/Document_Structure">here</a>. In this example I simply use <code>\section{My article}</code>. The final result is</p>
+
+<div class="highlight"><pre><code class="language-latex" data-lang="latex"><span class="k">\documentclass</span><span class="na">[12pt, twocolumn]</span><span class="nb">{</span>article<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="na">[landscape, margin=2cm]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+    <span class="k">\usepackage</span><span class="nb">{</span>lipsum<span class="nb">}</span>
+
+    <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+
+        <span class="k">\title</span><span class="nb">{</span>Example<span class="nb">}</span>
+        <span class="k">\author</span><span class="nb">{</span>john doe<span class="nb">}</span>
+        <span class="k">\date</span><span class="nb">{}</span>
+        <span class="k">\maketitle</span>
+
+        <span class="k">\section</span><span class="nb">{</span>My article<span class="nb">}</span>
+        
+        <span class="k">\lipsum</span>
+
+    <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></code></pre></div>
+
+            </div>
+            <div class="col-md-4">
+                <div id="sidebar">
+                    <h3>About Me</h3>
+
+<p>I am a recent BSc (Honours) graduate in physics, moving into into the software development world one day at a time.</p>
+
+<p>This site is a home for my code and miscellaneous other bits I find interesting.</p>
+
+<ul>
+  
+    <li><a href="/2014/12/01/yet-another-introduction-to-LaTeX.html">Yet another introduction to LaTeX</a></li>
+  
+    <li><a href="/2014/11/27/my-dissertation.html">Writing my Dissertation</a></li>
+  
+    <li><a href="/2014/11/13/introduction.html">An introduction</a></li>
+  
+</ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     
+  </body>
+</html>

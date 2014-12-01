@@ -3,7 +3,7 @@ import os
 print("Changing to F:")
 os.system('F:')
 
-path = 'F:\Google Drive\Code\github\gitweb\Deadleg.github.io'
+path = 'F:\Code\github\gitweb\Deadleg.github.io'
 print(path)
 os.chdir(path)
 

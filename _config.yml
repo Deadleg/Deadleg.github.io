@@ -5,3 +5,4 @@ safe: true
 lsi: false
 timezone: Pacific/Auckland
 paginate: 10
+excerpt_separator: <!--end excerpt-->
