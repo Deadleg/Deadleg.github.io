@@ -1,19 +1,36 @@
 ---
-layout: default
+layout: home
 ---
-
-{% for post in site.posts limit: 5 %}
 
 <div class="row-fluid">
     <div class="col-md-12">
-        <h2 class="small-header"> {{ post.title}} </h2>
-        <h4> {{ post.date | date_to_long_string }} </h4>
-        <div class="content"> {{ post.excerpt }} </div>
-        <a href="{{ post.url }}">read more...</a>
+        <h1 class="post-header">Welcome!</h1>
+        
+        <p>This is my little corner of the internet! Here I will blog on mathy/programmery bits, and show off some of my work.</p>
+    </div>
+    
+    <div class="col-md-6">
+        <h2 class="post-header">Blogs</h2>
+        {% for post in site.posts limit: 3 %}
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h2 class="small-header"> {{ post.title}} </h2>
+                <h4> {{ post.date | date_to_long_string }} </h4>
+                <div class="content"> {{ post.excerpt }} </div>
+                <a href="{{ post.url }}">read more...</a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    
+    <div class="col-md-6">
+        <h2 class="post-header">Projects</h2>
     </div>
 </div>
 
-{% endfor %}
+
 <div class="row-fluid">
   <div class="col-md-12">
     <div class="pagination">

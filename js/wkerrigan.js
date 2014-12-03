@@ -18,6 +18,9 @@ $(function() {
         $('#navbar-buttons a').each(function() { 
             if ($(this).attr('href') != '/' && path.indexOf($(this).attr('href')) > -1) {
                 $(this).parents('li').addClass('active');
+            } else if ($(this).attr('href') != '/' && path.substring(1,5).indexOf("20") > -1 && $(this).attr('href') == "/blog/") {
+                console.log(path.substring(1,5));
+                $(this).parents('li').addClass('active');
             }
         });
     }
