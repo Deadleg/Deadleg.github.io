@@ -5,11 +5,11 @@ title: Yet another introduction to LaTeX
 
 ##Introduction
 
-If you're reading this, you probably know what LaTeX is roughly. LaTeX works by first seperating the content and layout of the document. The user can then specify the layout parameters and any design they choose. LaTeX is then used to create the final document, constraining the content to the design parameters.
+If you're reading this, you probably know what LaTeX is roughly. LaTeX works by first separating the content and layout of the document. The user can then specify the layout parameters and any design they choose. LaTeX is then used to create the final document, constraining the content to the design parameters.
 
 Since the document is produced <emph>after</emph> defining the content and design, the TeX engine has all of the information it needs to create an optimally designed document.
 
-This introduction is not so much about creating LaTeX documents, but to show how the structure of a LaTeX file relates to the document it produces
+This introduction is not so much about creating LaTeX documents, but an attempt to show how the structure of a LaTeX file relates to the document it produces
 <!--end excerpt-->
 
 ##The structure of a document
@@ -30,7 +30,7 @@ If you are familiar with CSS, the styles you define are essentially the same as 
         
 ###Put together
     
-Creating a document is then done associating each bit of content with some rule, along with some piecing together.
+Creating a document is then done associating each bit of content with some rule, then piecing together each bit of content. This process is analogous to the combination of HTML and CSS, where HTML defines the structure of the webpage and provides some bare essential rules to piece together the content, and CSS provides more fine tuning and does the real styling of the page. 
         
 ##The document as a LaTeX file
 
@@ -87,10 +87,21 @@ Say you have a quote, and you want to have it styled using a different set of ru
     {% highlight latex %}
     \begin{environment_name}
         %put stuff here
-    \end{rulename}
+    \end{environment_name}
     {% endhighlight %}
     
-Any content between these statements will have the rules define by rulename. This comes up everywhere in LaTeX, so you will quickly become acquainted with it.
+Any content between these statements will have the rules define by `environment_name`. An example could be bullet pointed list, which looks like
+
+    {% highlight latex %}
+    \begin{itemize}
+        \item item 1
+        \item item 2
+    \end{itemize}
+    {% endhighlight %}
+
+The \item command becomes available in the `itemize`, and most if not all list-type environments. It tells LaTeX what this is a list item, so format it according to the `itemize` rules which simply adds a bullet point to the front of the text.
+    
+This comes up everywhere in LaTeX, so you will quickly become acquainted with it.
 
 ### Content
 
@@ -117,7 +128,7 @@ All content lives inside the `document` environment, including the title informa
     \maketitle
     {% endhighlight %}
     
-The commands are self explanatory, except the `\date{}` line which has no content. This simply removes the date from the title. `\maketitle` tells LaTeX exactly that, make the title! If you don't include it, the title won't work.
+The commands are self explanatory, except the `\date{}` line which has no content. This just removes the date from the title, or you can add a set date inside the brace, or use `\today` for todays date. `\maketitle` tells LaTeX exactly that, make the title! If you don't include it, the title won't work.
 
 Lastly, we add a section header. LaTeX provides a set of headers, which you can find easily [here](http://en.wikibooks.org/wiki/LaTeX/Document_Structure). In this example I simply use `\section{My article}`. The final result is
 
@@ -135,7 +146,13 @@ Lastly, we add a section header. LaTeX provides a set of headers, which you can 
 
         \section{My article}
         
-        \lipsum
+        \lipsum[2-4]
 
     \end{document}
     {% endhighlight %}
+    
+Note that some commands can also take arguments, as can be seem by the `\lipsum[2-4]` line. This tells the `\lipsum` command to produce command from paragraphs 2 to 4, which makes the document one page.
+
+##Conclusion
+
+LaTeX may be intimidating at first, especially if you never done any programming or markup before. But I find its useful to remember that what you are really doing is defining rules for the content. The hard part is finding how to implement some of these rules, either by yourself or with the help of packages. When I need to find some relatively simple LaTeX command, I jump straight to [LaTeX wikibook](http://en.wikibooks.org/wiki/LaTeX). When I something a bit more, I just google what I need. This typically leads me to a StackExchange page where someone else has asked exactly the same question.
