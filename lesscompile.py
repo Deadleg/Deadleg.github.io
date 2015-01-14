@@ -1,6 +1,6 @@
 import os
 
-path = 'F:\Code\github\gitweb\Deadleg.github.io'
+path = 'E:\Code\github\gitweb\Deadleg.github.io'
 print(path)
 os.chdir(path)
 

@@ -13,20 +13,17 @@ layout: home
         <h2 class="post-header">Blogs</h2>
         {% for post in site.posts limit: 3 %}
 
-        <div class="row-fluid">
-            <div class="col-md-12">
-                <h2 class="small-header"> {{ post.title}} </h2>
-                <h4> {{ post.date | date_to_long_string }} </h4>
-                <div class="content"> {{ post.excerpt }} </div>
-                <a href="{{ post.url }}">read more...</a>
-            </div>
-        </div>
+            <h2 class="small-header"> {{ post.title}} </h2>
+            <h4> {{ post.date | date_to_long_string }} </h4>
+            <div class="content"> {{ post.excerpt }} </div>
+            <a href="{{ post.url }}">read more...</a>
 
         {% endfor %}
     </div>
     
     <div class="col-md-6">
         <h2 class="post-header">Projects</h2>
+        {% include quick-folder-cloner-excerpt.html %}
     </div>
 </div>
 

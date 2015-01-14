@@ -1,9 +1,9 @@
 import os
 
 print("Changing to F:")
-os.system('F:')
+os.system('E:')
 
-path = 'F:\Code\github\gitweb\Deadleg.github.io'
+path = 'E:\Code\github\gitweb\Deadleg.github.io'
 print(path)
 os.chdir(path)
 
