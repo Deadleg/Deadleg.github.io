@@ -9,7 +9,7 @@ I've written a decent amount LaTeX from relatively simple documents such as math
 
 <!--end excerpt-->
 
-Why Haskell? Haskell is my first foray into functional programming, with having done a few problems on Project Euler. And even with these simple programs, I enjoy programming in Haskell *a lot*. I think its mostly due to my math background and the similarity in thinking styles. As of writing this post, my knowledge extends to almost to the end of the chapters on Monads in Learn You a Haskell For Great Good.
+Why Haskell? Haskell is my first foray into functional programming, with my experience only consisting of doing a few problems on Project Euler. And even with these simple programs, I enjoy programming in Haskell *a lot*. I think its mostly due to my math background and the similarity in thinking styles. As of writing this post, my knowledge extends to almost to the end of the chapters on Monads in Learn You a Haskell For Great Good.
 
 The plan for the preprocessor is take something such as this:
 
