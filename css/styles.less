@@ -1,13 +1,19 @@
 @import "../bootstrap/less/bootstrap.less";
 
-@background: #f5f5f5;
-@navbar-color:  darken(@background, 5%);
+@background: #fdfff9;
+@second-background-colour: #f1e3e3;
+@navbar-color: @second-background-colour;
 @highlight-colour: #b06161;
+@second-highlight-colour: #61b0b0;
 
 @navbar-default-bg: @background;
 
 body {
     background-color:@background;
+}
+
+.context-box {
+    background-color: @second-background-colour;
 }
 
 .navbar-default {
