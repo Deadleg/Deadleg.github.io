@@ -184,7 +184,7 @@ Where the type definitions are:
 
 Then a parser could use type introspection (for variable names/operations) alongside evaluating `equationOne`, which maps names to LaTeX commands contained within a text file.
 
-In this case, the Haskell version is a bit longer, and it's readability debatable compared to the LaTeX version. But one thing it does allow you to do is reuse functions functions quickly (without those bloody backslashes everywhere!). For instance, if say you wanted to rewrite the above to a system of differential equations, all you would have to do is write
+In this case, the Haskell version is a bit longer, and it's readability compared to the LaTeX version is debatable. But one thing it does allow you to do is reuse functions quickly (without using those bloody backslashes everywhere!). For instance, if say you wanted to rewrite the above to a system of differential equations, all you would have to do is write
 
     {% highlight haskell %}
 
@@ -195,4 +195,4 @@ In this case, the Haskell version is a bit longer, and it's readability debatabl
 
 And your set!
 
-One other way that may work is to take working mathematical functions and rely heavily on type introspection to get the meta-data. But in the case of the above differential equation, `theta` is unknown and may not have a closed form. So you would need some method of saying *`theta` is a function that explicity depends on `x`, `y`, and `z`*. This method opens up support for incorperating other languages, but I don't there'd be a reliable way of implementing it considering scientific conputing uses languages from C to Matlab.
+One other way that may work is to take working mathematical functions and rely heavily on type introspection to get the meta-data. But in the case of the above differential equation, `theta` is unknown and may not have a closed form. So you would need some method of saying *`theta` is a function that explicity depends on `x`, `y`, and `z`*. Using this method opens up support for incorperating other languages, but I'm not sure there'd be a reliable way of implementing it considering considering the diverse ranges of languages used in the computing world. I'll stick to the former method and see where it takes me.
