@@ -6302,12 +6302,21 @@ button.close {
 body {
   background-color: #fdfff9;
 }
+.img-project-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .context-box {
-  background-color: #f1e3e3;
+  color: #e9d2d2;
+  background-color: #b06161;
 }
 .navbar-default {
   border-color: #d2a5a5;
-  background-color: #f1e3e3;
+  background-color: #e9d2d2;
 }
 .navbar-default .navbar-nav > li > a {
   color: #777777;
@@ -6321,7 +6330,7 @@ body {
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
   border-bottom: 4px solid #b06161;
-  background-color: #f1e3e3;
+  background-color: #e9d2d2;
 }
 .post-header {
   padding-bottom: 9px;

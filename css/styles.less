@@ -1,7 +1,7 @@
-@import "../bootstrap/less/bootstrap.less";
+@import "../../bootstrap/less/bootstrap.less";
 
 @background: #fdfff9;
-@second-background-colour: #f1e3e3;
+@second-background-colour: #e9d2d2;
 @navbar-color: @second-background-colour;
 @highlight-colour: #b06161;
 @second-highlight-colour: #61b0b0;
@@ -12,8 +12,16 @@ body {
     background-color:@background;
 }
 
+.img-project-responsive {
+    .img-responsive();
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .context-box {
-    background-color: @second-background-colour;
+    color: #e9d2d2;
+    background-color: @highlight-colour;
 }
 
 .navbar-default {
