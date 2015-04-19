@@ -3,8 +3,6 @@ layout: post
 title: The making of a LaTeX pre-processor with Haskell - Part I
 ---
 
-## Introduction
-
 I've written a decent amount LaTeX from relatively simple documents such as math assignments and essays, and longer more involved documents such as thesis's and CV's. In writting these simple documents I often find the LaTeX syntax a bit too much, such as having to emphasis text as `\emph{italic text}` and the syntax for lists being somewhat verbose. So I plan on writting a pre-processor using the Parsec library to acheive something similar do Jekyll's system of using markdown for content, and yaml headers for additional information.
 
 <!--end excerpt-->

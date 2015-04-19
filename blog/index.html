@@ -1,14 +1,17 @@
 ---
 layout: default
 ---
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="post-header">Blog</h1>
 
-<h1 class="post-header">Blog</h1>
+        {% for post in site.posts limit: 5 %}
 
-{% for post in site.posts limit: 5 %}
+        <h2 class="small-header"> {{ post.title}} </h2>
+        <h4> {{ post.date | date_to_long_string }} </h4>
+        <div class="content"> {{ post.excerpt | strip_html }} </div>
+        <a href="{{ post.url }}">read more...</a>
 
-    <h2 class="small-header"> {{ post.title}} </h2>
-    <h4> {{ post.date | date_to_long_string }} </h4>
-    <div class="content"> {{ post.excerpt }} </div>
-    <a href="{{ post.url }}">read more...</a>
-
-{% endfor %}
+        {% endfor %}
+    </div>
+</div>

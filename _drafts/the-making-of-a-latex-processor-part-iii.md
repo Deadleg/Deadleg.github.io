@@ -3,7 +3,6 @@ layout: post
 title: The making of a LaTeX pre-processor with Haskell - Part III
 ---
 
-## Part III - Tackling math
 Here I attempt to tackle creating a preprocessor that converts to LaTeX by using the expressiveness of Haskell and an over-abundance of functions.
 
 <!--end excerpt-->

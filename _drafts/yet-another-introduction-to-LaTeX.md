@@ -3,8 +3,6 @@ layout: post
 title: Yet another introduction to LaTeX
 ---
 
-##Introduction
-
 If you're reading this, you probably know what LaTeX is roughly. LaTeX works by first separating the content and layout of the document. The user can then specify the layout parameters and any design they choose. LaTeX is then used to create the final document, constraining the content to the design parameters.
 
 Since the document is produced <emph>after</emph> defining the content and design, the TeX engine has all of the information it needs to create an optimally designed document.

@@ -1,15 +1,17 @@
 @import "../../bootstrap/less/bootstrap.less";
 
-@background: #fdfff9;
+@background: #e3e5e0;
 @second-background-colour: #e9d2d2;
 @navbar-color: @second-background-colour;
-@highlight-colour: #b06161;
+@highlight-colour: #389c4f; 
+@highlight-colour-text: #dfefe2; 
 @second-highlight-colour: #61b0b0;
 
 @navbar-default-bg: @background;
 
 body {
     background-color:@background;
+    padding-top: @navbar-height;
 }
 
 .img-project-responsive {
@@ -19,14 +21,22 @@ body {
     margin-right: auto;
 }
 
-.context-box {
-    color: #e9d2d2;
+.about-me {
+    color: @highlight-colour-text;
     background-color: @highlight-colour;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
 .navbar-default {
-    border-color: lighten(@highlight-colour, 20%);
-    background-color: @navbar-color;
+    //border-color: lighten(@highlight-colour, 20%);
+    //background-color: @navbar-color;
+}
+
+.content {
+    white-space: pre-line;
 }
 
 .navbar-default .navbar-nav {
@@ -36,15 +46,15 @@ body {
       &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
-        border-bottom: 4px solid lighten(@highlight-colour, 20%);
+        //border-bottom: 4px solid lighten(@highlight-colour, 20%);
       }
     }
     > .active > a {
         &,
         &:focus,
         &:hover {
-            border-bottom: 4px solid @highlight-colour;
-            background-color: @navbar-color;
+            //border-bottom: 4px solid @highlight-colour;
+            //background-color: @navbar-color;
         }
     }
 }

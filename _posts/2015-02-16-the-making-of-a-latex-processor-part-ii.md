@@ -3,7 +3,6 @@ layout: post
 title: The making of a LaTeX pre-processor with Haskell - Part II
 ---
 
-## Part II - A working program (kinda)
 In the previous part, the progam could parse text for emphasized and bold characters. So there's some functionality, except that it doesn't *do* anything useful like produce output. In this part, I'll implement parsing links Markdown stlye (this is really more of an implementation of Markdown than anything else at the moment), and then turn the parsed text into something useful!
 
 <!--end excerpt-->
