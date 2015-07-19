@@ -6,16 +6,12 @@ version: v0.6
 
 /first:
   get:
-    securedBy: [oauth_2_0]
-    description: Get all candidateOwned items for this application
     body:
       application/json:
         schema: !include json1.json
         example: !include json2.json 
 /second:
   get:
-    securedBy: [oauth_2_0]
-    description: Get a specific candidateOwned item for this application
     body:
       application/json:
         schema: !include json3.json
