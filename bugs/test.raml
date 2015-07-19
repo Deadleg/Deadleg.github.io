@@ -9,11 +9,13 @@ version: v0.6
     body:
       application/json:
         schema: !include json1.json
-        example: !include json2.json 
+/second:
+  get:
+    body:
+      application/json:
+        schema: !include json2.json
 /second:
   get:
     body:
       application/json:
         schema: !include json3.json
-        example: !include json4.json 
-
