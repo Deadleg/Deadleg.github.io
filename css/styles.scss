@@ -1,0 +1,35 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$top-padding: 6rem;
+
+body {
+    padding-top: $top-padding;
+}
+
+.excerpt {
+    margin: 0 0 2rem 0;
+}
+
+.excerpt-content {
+    margin: 1rem 0 1rem 0;
+}
+
+.read-more {
+    margin-top: 2rem;
+}
+
+.date {
+    color: $gray-700;
+    font-size: 0.8rem;
+}
+
+.small-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.sticky {
+    position: sticky;
+    top: $top-padding;
+    align-self: flex-start;
+}

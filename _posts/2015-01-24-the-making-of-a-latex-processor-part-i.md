@@ -19,21 +19,21 @@ The plan for the preprocessor is take something such as this:
 
 And produce a .tex file reading for processing:
 
-    {% highlight latex %}
+{% highlight latex %}
 
-    \documentclass{article}
+\documentclass{article}
 
-    \begin{document}
-        This is a sample latex document. \emph{I am emphasized}, \textbf{but I am in bold}. And here is a list 
+\begin{document}
+    This is a sample latex document. \emph{I am emphasized}, \textbf{but I am in bold}. And here is a list 
 
-        \begin{itemize}
-            \item Item 1
-            \item Item 2
-            \item Item 3
-        \end{itemize}
-    \end{document}
+    \begin{itemize}
+        \item Item 1
+        \item Item 2
+        \item Item 3
+    \end{itemize}
+\end{document}
 
-    {% endhighlight %}
+{% endhighlight %}
 
 ## Part I - First steps
 
@@ -43,71 +43,71 @@ A simple first goal is to parse text containing italics and/or bold characters. 
 
 Here is my first attempt at the parser:
 
-    {% highlight haskell linenos %}
+{% highlight haskell linenos %}
 
-    import System.IO
-    import Control.Monad
-    import Text.ParserCombinators.Parsec
-    import Data.List
+import System.IO
+import Control.Monad
+import Text.ParserCombinators.Parsec
+import Data.List
 
-    type Latex = String
+type Latex = String
 
-    emphasisSymbol :: Parser Char
-    emphasisSymbol = char '*'
+emphasisSymbol :: Parser Char
+emphasisSymbol = char '*'
 
-    boldSymbol :: Parser String
-    boldSymbol = string "**"
+boldSymbol :: Parser String
+boldSymbol = string "**"
 
-    beginBoldEmphasisSymbol :: Parser String
-    beginBoldEmphasisSymbol = string "*_"
+beginBoldEmphasisSymbol :: Parser String
+beginBoldEmphasisSymbol = string "*_"
 
-    endBoldEmphasisSymbol :: Parser String
-    endBoldEmphasisSymbol = string "_*"
+endBoldEmphasisSymbol :: Parser String
+endBoldEmphasisSymbol = string "_*"
 
-    emphacizedChar :: Parser Char
-    emphacizedChar = noneOf "*"
+emphacizedChar :: Parser Char
+emphacizedChar = noneOf "*"
 
-    boldEmphasizedChar :: Parser Char
-    boldEmphasizedChar = try (do char '_'
-                                 noneOf "*")
-                     <|> noneOf "_"
-                     <?> "Didn't find bold emph."
+boldEmphasizedChar :: Parser Char
+boldEmphasizedChar = try (do char '_'
+                                noneOf "*")
+                    <|> noneOf "_"
+                    <?> "Didn't find bold emph."
 
-    boldChar :: Parser Char
-    boldChar = try (do char '*'
-                       noneOf "*")
-           <|> noneOf "*"
-           <?> "Didn't find bold." 
+boldChar :: Parser Char
+boldChar = try (do char '*'
+                    noneOf "*")
+        <|> noneOf "*"
+        <?> "Didn't find bold." 
 
-    boldEmphasis = do beginBoldEmphasisSymbol
-                      content <- many1 boldEmphasizedChar
-                      endBoldEmphasisSymbol
-                      return content
+boldEmphasis = do beginBoldEmphasisSymbol
+                    content <- many1 boldEmphasizedChar
+                    endBoldEmphasisSymbol
+                    return content
 
-    emphasis = do emphasisSymbol
-                  content <- many1 emphacizedChar
-                  emphasisSymbol
-                  return content
+emphasis = do emphasisSymbol
+                content <- many1 emphacizedChar
+                emphasisSymbol
+                return content
 
-    bold = do boldSymbol
-              content <- many1 boldChar
-              boldSymbol
-              return content
+bold = do boldSymbol
+            content <- many1 boldChar
+            boldSymbol
+            return content
 
-    bodyText = try (boldEmphasis) <|> try (bold) <|> try (emphasis) <|> many1 (noneOf "*")
+bodyText = try (boldEmphasis) <|> try (bold) <|> try (emphasis) <|> many1 (noneOf "*")
 
-    htexFile = many bodyText
+htexFile = many bodyText
 
-    readInput :: String -> [Latex]
-    readInput input = case parse htexFile "" input of
-        Left err  -> ["No match " ++ show err]
-        Right val -> val
+readInput :: String -> [Latex]
+readInput input = case parse htexFile "" input of
+    Left err  -> ["No match " ++ show err]
+    Right val -> val
 
-    main = do 
-        contents <- readFile "input.htex"
-        putStrLn $ intercalate "\n" (readInput contents)
+main = do 
+    contents <- readFile "input.htex"
+    putStrLn $ intercalate "\n" (readInput contents)
 
-    {% endhighlight %}
+{% endhighlight %}
 
 The function `bodyText` is where all of the parsers are put together. The order in important: `boldEmphasis` and `bold` should come before `emphasis`, otherwise emphasis will consume the first `*`, then consume the second `*` recognising it as the end of an emphasis, or consume `_` and just recoginise it as a character. I can forsee combining these three functions, and choosing which one to do after the first `*` has been chosen.
 
@@ -132,7 +132,7 @@ Compiling and running with `input.htex` containing `This is not in italics. *But
     This is bold.
      This is not bold.
     This is in bold italics
-     Thisi is not in bold italics.
+     This is not in bold italics.
 
 Promising!
 

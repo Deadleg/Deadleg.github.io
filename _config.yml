@@ -1,7 +1,7 @@
-name: webtex
+name: Deadleg
 highlighter: pygments
 github: [Repository metadata]
-safe: true
+safe: false
 lsi: false
 timezone: Pacific/Auckland
 paginate: 10

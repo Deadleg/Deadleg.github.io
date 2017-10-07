@@ -216,3 +216,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+node_modules/
+.jekyll-metadata
+.sass-cache/

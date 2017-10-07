@@ -1,4 +1,5 @@
 // Affix the sidebar to make it static
+/*
 $(function() {
     $('#sidebar').affix();
 });
@@ -8,6 +9,7 @@ $(function() {
     var colWidth = $('.col-md-4').width();
     $('#sidebar').width(colWidth);
 });
+*/
 
 // Change the active state in the nav-bar
 $(function() {
