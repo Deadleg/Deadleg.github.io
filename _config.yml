@@ -4,5 +4,5 @@ github: [Repository metadata]
 safe: false
 lsi: false
 timezone: Pacific/Auckland
-paginate: 10
+paginate: 5
 excerpt_separator: <!--end excerpt-->

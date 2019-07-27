@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Deadleg/Deadleg.github.io#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0-beta"
+    "bootstrap": "4.3.1"
   }
 }
