@@ -1,3 +1,10 @@
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-base: 'EB Garamond', serif;
+$font-size-base: 1.2rem;
+$line-height-base: 1.4;
+$paragraph-margin-bottom: 1.5rem;
+//$headings-margin-bottom: 1.5rem;
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 $top-padding: 6rem;
@@ -15,12 +22,13 @@ body {
 }
 
 .read-more {
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .date {
     color: $gray-700;
     font-size: 0.8rem;
+    margin-bottom: 2rem;
 }
 
 .small-header {
@@ -28,8 +36,32 @@ body {
     font-weight: 600;
 }
 
+.sidebar {
+    padding-left: 3rem;
+}
+
 .sticky {
     position: sticky;
     top: $top-padding;
     align-self: flex-start;
+}
+
+body {
+    // Garamond breaks
+    font-feature-settings: 'liga' 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-sans-serif
+}
+
+.mjx-chtml.MJXc-display {
+    margin-top: $paragraph-margin-bottom;
+    margin-bottom: $paragraph-margin-bottom;
+}
+
+ol,
+ul,
+dl {
+  margin-bottom: 1.5rem;
 }
